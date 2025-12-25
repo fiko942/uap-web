@@ -159,7 +159,7 @@
         </div>
         <div class="info-row">
             <span class="info-label">Pelanggan:</span>
-            <span>{{ $order->user->name }}</span>
+            <span>{{ $order->user ? $order->user->name : 'Guest/Terhapus' }}</span>
         </div>
         <div class="info-row">
             <span class="info-label">Status:</span>
@@ -179,7 +179,7 @@
         <tbody>
             @foreach($order->orderItems as $item)
                 <tr>
-                    <td>{{ $item->menu->name }}</td>
+                    <td>{{ $item->menu ? $item->menu->name : 'Item Tidak Tersedia' }}</td>
                     <td class="text-center">{{ $item->qty }}</td>
                     <td class="text-right">Rp {{ number_format($item->price, 0, ',', '.') }}</td>
                     <td class="text-right">Rp {{ number_format($item->line_total, 0, ',', '.') }}</td>
